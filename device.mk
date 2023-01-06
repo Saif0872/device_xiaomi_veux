@@ -242,6 +242,8 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-service-qti
 
 PRODUCT_PACKAGES += \
+    liblocation_api \
+    libgps.utils \
     libbatching \
     libgeofencing \
     libgnss
@@ -454,7 +456,6 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    libjson \
     librmnetctl
 
 PRODUCT_PACKAGES += \
