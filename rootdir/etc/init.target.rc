@@ -75,7 +75,7 @@ on early-fs
 
 on fs
     start hwservicemanager
-    mount_all --early
+    mount_all --early /vendor/etc/fstab.qcom
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
     restorecon_recursive /mnt/vendor/persist
@@ -96,10 +96,14 @@ on late-fs
     wait_for_prop hwservicemanager.ready true
     #exec_start wait_for_keymaster
     start console
-    mount_all --late
+    mount_all --late /vendor/etc/fstab.qcom
+
+    # Enable ZRAM on boot_complete
+    swapon_all /vendor/etc/fstab.zram
 
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
+#ExtR HONGMI-90116,wufa@wingtech.com,add,20210908,add mi_thermal
     mkdir /data/vendor/thermal 0771 root system
     mkdir /data/vendor/thermal/config 0771 root system
     chmod 0644 /dev/elliptic0
@@ -157,7 +161,7 @@ on boot
     chmod 0644 /mnt/vendor/persist/audio/aw_cali.bin
     chmod 0644 /mnt/vendor/persist/audio/fsm_calib.bin
 
-    chmod 0664 /sys/class/power_supply/battery/dc_thermal_levels
+    #ExtR HONGMI-90116,wufa@wingtech.com,add,20210908,add mi_thermal
     chown system system /sys/class/thermal/thermal_message/sconfig
 
 # add dual
@@ -189,8 +193,10 @@ on charger
     start vendor.power_off_alarm
     setprop sys.usb.controller 4e00000.dwc3
     setprop sys.usb.configfs 1
+    #+ExtR HONGMI-90116,wufa@wingtech.com,add,20210908,add mi_thermal
     start mi_thermald
- 
+    #-ExtR HONGMI-90116,wufa@wingtech.com,add,20210908,add mi_thermal
+
 #+ExtR HONGMI-90162,zhangb02@wingtech.com,add,20211003,add misound
 service audioshell_service /vendor/bin/audioshell_service
     oneshot
@@ -245,11 +251,13 @@ service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
    group system wifi inet sdcard_rw media_rw diag
    oneshot
 
+#ExtR HONGMI-90116,wufa@wingtech.com,add,20210908,add mi_thermal
 service mi_thermald /system/vendor/bin/mi_thermald	
     class main
     user root
     group system
     seclabel u:r:mi_thermald:s0
+#-ExtR HONGMI-90116,wufa@wingtech.com,add,20210908,add mi_thermal
 
 service svi_on /vendor/bin/ppd "svi:on"
     class main
@@ -286,5 +294,5 @@ on property:graphics.display.kernel_idle_timer.enabled=true
     write /sys/devices/platform/soc/soc:qcom,dsi-display-primary/idle_mode "@60"
 
 on property:graphics.display.kernel_idle_timer.enabled=false
-    # Disable aggressive idle mode switching
-    write /sys/devices/platform/soc/soc:qcom,dsi-display-primary/idle_mode "none"
+    # Disable agressive idle mode switching
+    write /sys/devices/platform/soc/soc:qcom,dsi-display-primary/idle_mode "none"    
