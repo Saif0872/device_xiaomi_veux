@@ -28,9 +28,6 @@ media.stagefright.thumbnail.prefer_hw_codecs=true
 persist.mm.enable.prefetch=true
 vendor.mm.enable.qcom_parser=16777215
 
-# Netflix custom property
-ro.netflix.bsp_rev=Q4350-32962-1
-
 # NFC
 ro.nfc.port=I2C
 
@@ -46,6 +43,12 @@ ril.subscription.types=NV,RUIM
 
 # Sensors
 persist.vendor.sensors.enable.mag_filter=true
+
+#SuperiorOS
+ro.boot.vendor.overlay.static=false
+ro.surface_flinger.supports_background_blur=1
+ro.hwui.disable_scissor_opt=false
+ro.zygote.disable_gl_preload=true
 
 # WiFi Display
 debug.sf.latch_unsignaled=1

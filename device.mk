@@ -46,10 +46,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.zram:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.zram
 
-# Device-specific settings
-PRODUCT_PACKAGES += \
-    XiaomiParts
-
 # ZRAM writeback
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.zram.mark_idle_delay_mins=60 \
