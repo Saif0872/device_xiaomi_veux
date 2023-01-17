@@ -2,8 +2,5 @@
 camera.					u:object_r:vendor_camera_prop:s0
 
 # Fingerprint
-sys.fp.vendor				u:object_r:vendor_fp_prop:s0
-
-# Thermal
-sys.thermal.                                    u:object_r:vendor_thermal_normal_prop:s0
-persist.sys.thermal.config                      u:object_r:vendor_thermal_normal_prop:s0
+sys.fp.vendor				u:object_r:vendor_fingerprint_prop:s0
+gf.debug.                       u:object_r:vendor_fingerprint_prop:s0
