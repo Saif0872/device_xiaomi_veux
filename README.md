@@ -21,4 +21,4 @@
 
 ## Device Picture
 
-![POCO X4 Pro 5G/Redmi Note 11E Pro/Redmi Note 11 Pro 5G/Redmi Note 11 Pro+ 5G](https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-poco-x4-pro-2.jpg "POCO X4 Pro 5G/Redmi Note 11E Pro/Redmi Note 11 Pro 5G/Redmi Note 11 Pro+ 5G")
+![POCO X4 Pro 5G/Redmi Note 11E Pro/Redmi Note 11 Pro 5G/Redmi Note 11 Pro+ 5G](https://github.com/SharmagRit/twrp-android_device_xiaomi_veux/blob/ofox/veux.png?raw=true "POCO X4 Pro 5G/Redmi Note 11E Pro/Redmi Note 11 Pro 5G/Redmi Note 11 Pro+ 5G")
